@@ -1,6 +1,5 @@
 const restaurantService = require("../services/restaurantService")
 
-
 const insertRestaurant = (req,res) => {
     //inserire logica della response
     restaurantService.createRestaurant().then((result) => {

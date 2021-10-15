@@ -1,6 +1,4 @@
 const Restaurant = require("../models/restaurant");
-
-
 const getRestaurants = () => {
     return new Promise((res, rej) => {
         Restaurant.find().then((result) => {
@@ -12,7 +10,7 @@ const getRestaurants = () => {
 }
 
 const createRestaurant = () => {
-    const restaurant = new Restaurant({
+    let restaurant = new Restaurant({
         name: "Test"
     })
     return new Promise((res,rej) => {
