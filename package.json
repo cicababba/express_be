@@ -1,0 +1,15 @@
+{
+  "name": "express_be",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Matteo Adduci",
+  "license": "MIT",
+  "scripts": {
+    "dev:start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.11",
+    "node": "^16.10.0"
+  }
+}
