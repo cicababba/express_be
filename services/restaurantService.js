@@ -1,4 +1,5 @@
 const Restaurant = require("../models/restaurant");
+
 const getRestaurants = () => {
     return new Promise((res, rej) => {
         Restaurant.find().then((result) => {

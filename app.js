@@ -11,13 +11,14 @@ const dbURI = "mongodb+srv://root:root@minibackend.i5vcu.mongodb.net/expressBe?r
 mongoose.connect(dbURI).then(() => {
     console.log("Connection to database completed!")
     app.listen(3000)
+    app.use(express.json())
     app.use('/restaurant', restaurantRoutes)
     app.use('/auth', authRoutes)
 }).catch(err => {
     console.error(err)
 })
 
-//TODO implementare JWT con middleware
+//TODO implementare JWT con middlewares
 //TODO db uri in .env
 //TODO definire model
 //TODO finire le api
