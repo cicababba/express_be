@@ -4,9 +4,10 @@ This is an easy express implementation of a backend
 
 ### INSTALLATION
  
-1 - open a terminal in the root of the folder\
-2 - execute the command `yarn install` you can find yarn here [YARN](https://yarnpkg.com/getting-started) \
-3 - use the command `yarn dev:start` to run the application
+1 - clone the project 
+2 - open a terminal in the root of the folder you just cloned\
+3 - execute the command `yarn install` you can find yarn here [YARN](https://yarnpkg.com/getting-started) \
+4 - use the command `yarn dev:start` to run the application
 
 ### POSTMAN COLLECTION
 
