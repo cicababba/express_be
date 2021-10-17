@@ -22,10 +22,6 @@ mongoose.connect(dbURI).then(() => {
     console.error(`Something went wrong, cannot start the app, error: ${err}`)
 })
 
-//TODO finire le api
-//TODO README
-//TODO postman collection
-
 
 
 
