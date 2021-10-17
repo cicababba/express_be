@@ -3,6 +3,21 @@ const Schema = mongoose.Schema
 const { isEmail } = require("validator")
 const bcrypt = require("bcrypt")
 
+const reservationSchema = new Schema({
+    restaurantName: {
+        type: String,
+        required: true,
+    },
+    restaurantId: {
+        type: String,
+        required: true,
+    },
+    date: {
+        type: Date,
+        required: true
+    }
+})
+
 const userSchema = new Schema({
     email: {
         type: String,
@@ -14,10 +29,20 @@ const userSchema = new Schema({
         type: String,
         required: [true, "Please enter the password"],
         minlength: 6
+    },
+    reservations: {
+        type: [reservationSchema]
     }
 }, { timestamps: true })
 
+
 userSchema.pre("save", function(next) {
+    const salt = bcrypt.genSaltSync()
+    this.password = bcrypt.hashSync(this.password, salt)
+    next()
+})
+
+userSchema.pre("update", function(next) {
     const salt = bcrypt.genSaltSync()
     this.password = bcrypt.hashSync(this.password, salt)
     next()

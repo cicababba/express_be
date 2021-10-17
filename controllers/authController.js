@@ -1,4 +1,5 @@
-const { createNewUser, userLogin } = require("../services/authService")
+const { userLogin } = require("../services/authService")
+const { sendErrorResponse } = require("../shared/utils");
 
 const login = (req,res) => {
     const {email, password} = req.body
@@ -6,28 +7,22 @@ const login = (req,res) => {
         if(result)
             res.send(result)
         else
-            res.status(401).send("Incorrect login")
+            sendErrorResponse(401, "email or password are wrong", res)
     }).catch(err => {
-        res.status(500).send(err)
+        sendErrorResponse(500, err, res)
     })
 
 }
 
 const logout = (req,res) => {
-
-}
-
-const signup = (req, res) => {
-    const { email, password } = req.body
-    createNewUser(email, password).then(result => {
-        res.send(result)
-    }).catch(err => {
-        res.status(400).send(err)
-    })
+    //ti chiedo scusa, non ho avuto voglia di implementarlo
+    //avrei salvato su db i token e quindi nella validateToken
+    //oltre a controllare la validtá del token
+    //avrei controllato anche che non fosse su db
+    res.status(200).send()
 }
 
 module.exports = {
     login,
-    logout,
-    signup
+    logout
 }

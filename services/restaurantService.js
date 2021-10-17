@@ -1,29 +1,33 @@
 const Restaurant = require("../models/restaurant");
 
-const getRestaurants = () => {
-    return new Promise((res, rej) => {
-        Restaurant.find().then((result) => {
-            res(result)
-        }).catch(err => {
-            rej(err)
-        })
-    })
+const getRestaurantByName = (name) => {
+    return Restaurant.find({ name })
 }
 
-const createRestaurant = () => {
-    let restaurant = new Restaurant({
-        name: "Test"
-    })
-    return new Promise((res,rej) => {
-        restaurant.save().then((result) => {
-            res(result)
-        }).catch(err => {
-            rej(err)
-        })
-    })
+const getRestaurants = () => {
+    return Restaurant.find()
 }
+
+const createRestaurant = (data) => {
+    const { name, menu, photos } = data
+    const newRestaurant = new Restaurant({ name, menu, photos })
+    return newRestaurant.save()
+}
+
+const deleteRestaurant = (id) => {
+    return Restaurant.findByIdAndDelete(id)
+}
+
+const updateRestaurant = (id, data) => {
+    const { name, menu, photos } = data
+    return Restaurant.findOneAndUpdate(id, { name, menu, photos })
+}
+
 
 module.exports = {
     getRestaurants,
-    createRestaurant
+    createRestaurant,
+    getRestaurantByName,
+    deleteRestaurant,
+    updateRestaurant
 }

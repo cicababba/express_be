@@ -7,9 +7,6 @@ const createToken = (userId) => {
     })
 }
 
-const createNewUser = (email,password) => {
-    return User.create({ email, password })
-}
 
 const userLogin = async (email, password) => {
     const userId = await User.login(email, password)
@@ -23,7 +20,6 @@ const userLogout = (token) => {
 }
 
 module.exports = {
-    createNewUser,
     userLogin,
     userLogout
 }
